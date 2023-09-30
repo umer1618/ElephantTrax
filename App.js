@@ -1,11 +1,22 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import SignIn from './src/screens/SignIn';
 import SignUp from './src/screens/SignUp';
 export default function App() {
+  const [isPageChanged, setIsPageChanged] = useState(false);
   return (
     <View style={styles.container}>
-      <SignIn />
+      {!isPageChanged ? (
+        <SignIn
+          isPageChanged={isPageChanged}
+          setIsPageChanged={setIsPageChanged}
+        />
+      ) : (
+        <SignUp
+          isPageChanged={isPageChanged}
+          setIsPageChanged={setIsPageChanged}
+        />
+      )}
     </View>
   );
 }

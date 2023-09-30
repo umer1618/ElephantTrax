@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import SocialAccount from '../components/SocialAccount';
 import Input from '../components/Input';
 import Button from '../components/Button';
-export default function SignIn() {
+export default function SignIn({setIsPageChanged}) {
   const [error, setError] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -65,7 +65,10 @@ export default function SignIn() {
           <Button onPress={validateForm} name="Sign in" />
           <View style={{flexDirection: 'row', alignSelf: 'center'}}>
             <Text>Need an account? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setIsPageChanged(true);
+              }}>
               <Text style={styles.touch}>Sign up</Text>
             </TouchableOpacity>
           </View>

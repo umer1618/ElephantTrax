@@ -4,7 +4,7 @@ import SocialAccount from '../components/SocialAccount';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import {Check, X} from 'lucide-react-native';
-export default function SignUp() {
+export default function SignUp({setIsPageChanged}) {
   const [name, setName] = useState('');
   const [familyName, setFamilyName] = useState('');
   const [email, setEmail] = useState('');
@@ -112,7 +112,7 @@ export default function SignUp() {
           <Button name="Sign up" />
           <View style={{flexDirection: 'row', alignSelf: 'center'}}>
             <Text>Already have an account? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setIsPageChanged(false)}>
               <Text style={styles.touch}>Sign in</Text>
             </TouchableOpacity>
           </View>
