@@ -13,11 +13,22 @@ export default function SignIn({setIsPageChanged}) {
   }, [email, password]);
 
   const validateForm = () => {
-    if (email === '' || password === '') {
+    // Email validation using a regular expression
+    const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+
+    // Password strength check
+    const isStrongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(
+      password,
+    );
+
+    if (!emailRegex.test(email) || !isStrongPassword) {
       setError(true);
+    } else {
+      setError(false);
+      console.log('Form Validated');
     }
-    console.log('form Validated');
   };
+
   return (
     <View>
       <View style={styles.imgContainer}>
